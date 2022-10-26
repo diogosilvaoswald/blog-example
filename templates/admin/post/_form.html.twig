@@ -1,0 +1,17 @@
+{{ form_start(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.category) }}
+    {{ form_row(form.intro) }}
+    {{ form_row(form.publish_date) }}
+    {{ form_row(form.published) }}
+
+    <ul class="text_content" data-prototype="{{ form_widget(form.text_content.vars.prototype)|e('html_attr') }}"></ul>
+        {% for content in form.text_content %}
+            <li>{{ form_row(content.title) }}</li>
+            <li>{{ form_row(content.text) }}</li>
+        {% endfor %}
+    </ul>
+    <button type="button" class="add_item_link btn btn-warning" data-collection-holder-class="text_content">Add Text Content</button>
+    <br>
+    <button class="btn btn-primary mt-2">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

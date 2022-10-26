@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog{% endblock %}
+
+{% block body %}
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h1 class="card-title">{{ post.title }}</h1>
+            <p class="card-text">{{ post.intro }}</p>
+            <p>Category: <strong>{{ post.category.name ?? 'Undefined' }}</strong></p>
+            <p>Publish Date: <strong>{{ post.publishDate|date('Y-m-d') }}</strong></p>
+            <hr>
+
+            {% for content in post.textContent %}
+                <p>
+                    <h5>{{ content.title }}</h5>
+                    <p>{{ content.text }}</p>
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <a href="/" class="btn btn-secondary mt-4">← back home</a>
+
+{% endblock %}
